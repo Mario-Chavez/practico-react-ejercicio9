@@ -9,12 +9,12 @@ const Formulario = () => {
    const [hora, setHora] = useState("")
    const [sintomas, setSintomas] = useState("")
    
-//    const listadoCitas = JSON.parse( localStorage.getItem('listadoCitas')) || [];
-   const [listamascota, setListamascota] = useState([])
+   const listadoCitas = JSON.parse( localStorage.getItem('listadoCitas')) || [];
+   const [listamascota, setListamascota] = useState(listadoCitas)
    
    useEffect(() => {
-    // localStorage.setItem("listadoCitas",JSON.stringify(listamascota))
-    console.log(listamascota);
+    localStorage.setItem("listadoCitas",JSON.stringify(listamascota))
+    // console.log(listamascota);
   }, [listamascota])
 
    const handleSubmit =(e)=>{
@@ -32,11 +32,11 @@ const Formulario = () => {
         setSintomas("")
     }
    
-    
+
     return (
         <> 
             <section>
-                <Form onSubmit={handleSubmit} className=' mx-auto formulario p-2 border'>
+                <Form  className=' mx-auto formulario p-2 border'>
                     <div>
                         <p className='text-info fs-5' >Llenar el formulario para crear una cita</p>
                         <hr />
@@ -89,13 +89,13 @@ const Formulario = () => {
                     </Form.Group>
                     <Form.Group>
                         <div  className='my-5 d-flex justify-content-center '>
-                            <Button type='submit' className='px-5 botonFormulario'>Agregar nueva cita</Button>
+                            <Button type='submit' className='px-5 botonFormulario' onClick={handleSubmit}>Agregar nueva cita</Button>
                         </div>
                     </Form.Group>
                 </Form>
             </section>
             <section className="row justify-content-between mt-5">
-                    <CardMascota/>
+                    <CardMascota listaDeCitas ={listamascota}/>
             </section>
         </>
     );
