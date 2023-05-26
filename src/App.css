@@ -1,0 +1,18 @@
+#root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.mainPage{
+    flex-grow:1;
+}
+
+.formulario {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   
+  }
+.botonFormulario {
+    box-shadow: 0 8px 12px -4px rgba(0, 0, 0, 0.75); 
+   
+  }
+  
