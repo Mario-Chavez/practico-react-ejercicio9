@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, } from 'react-bootstrap';
 import CardMascota from './CardMascota';
 
@@ -9,12 +9,30 @@ const Formulario = () => {
    const [hora, setHora] = useState("")
    const [sintomas, setSintomas] = useState("")
    
+//    const listadoCitas = JSON.parse( localStorage.getItem('listadoCitas')) || [];
+   const [listamascota, setListamascota] = useState([])
    
+   useEffect(() => {
+    // localStorage.setItem("listadoCitas",JSON.stringify(listamascota))
+    console.log(listamascota);
+  }, [listamascota])
+
    const handleSubmit =(e)=>{
         e.preventDefault()
-        console.log(nombreMascota,nombreDueño,fecha,hora);
+        setListamascota([
+            ...listamascota,
+            {
+                nombreMascota,nombreDueño,fecha,hora, sintomas 
+             }
+        ])
+        setNombreMascota("")
+        setNombreDueño("")
+        setFecha("")
+        setHora("")
+        setSintomas("")
     }
-   /* fijarme como hacer para q los nombres queden al costado */
+   
+    
     return (
         <> 
             <section>
