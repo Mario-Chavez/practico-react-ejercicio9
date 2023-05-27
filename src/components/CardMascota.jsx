@@ -2,8 +2,8 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import Avatar from 'react-avatar';
 
-const CardMascota = ({listaDeCitas}) => {
-    console.log();
+const CardMascota = ({listaDeCitas,handleBorrar}) => {
+    
     return (
         <>
              {
@@ -29,7 +29,7 @@ const CardMascota = ({listaDeCitas}) => {
                         
                     </Card.Body>
                     <Card.Footer className="d-flex justify-content-center">
-                                <Button className="col-7 botonFormulario" variant="danger" >Borrar</Button>
+                                <Button className="col-7 botonFormulario" variant="danger" onClick ={()=>handleBorrar(mascota.nombreMascota)} >Borrar</Button>
                     </Card.Footer>
                 </Card>    
                 )

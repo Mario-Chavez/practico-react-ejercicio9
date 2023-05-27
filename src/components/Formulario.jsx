@@ -31,6 +31,12 @@ const Formulario = () => {
         setHora("")
         setSintomas("")
     }
+
+    const handleBorrar = (nombreMascota)=>{
+      let arregloFiltrado = listamascota.filter((itemMascota)=>itemMascota.nombreMascota !== nombreMascota)
+      setListamascota(arregloFiltrado)
+    }
+
    
 
     return (
@@ -97,7 +103,7 @@ const Formulario = () => {
             <section className="row justify-content-between mt-5">
                      {
                         listamascota.length > 0 
-                        ? <CardMascota listaDeCitas ={listamascota}/>
+                        ? <CardMascota listaDeCitas ={listamascota} handleBorrar ={handleBorrar} />
                         : <h3 className='text-center border'>No hay citas agendadas</h3>
                     }
                     
