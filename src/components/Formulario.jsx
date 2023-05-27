@@ -14,7 +14,7 @@ const Formulario = () => {
    
    useEffect(() => {
     localStorage.setItem("listadoCitas",JSON.stringify(listamascota))
-    // console.log(listamascota);
+    
   }, [listamascota])
 
    const handleSubmit =(e)=>{
@@ -36,7 +36,7 @@ const Formulario = () => {
     return (
         <> 
             <section>
-                <Form  className=' mx-auto formulario p-2 border'>
+                <Form  className=' mx-auto formulario p-2 border'onSubmit={handleSubmit} >
                     <div>
                         <p className='text-info fs-5' >Llenar el formulario para crear una cita</p>
                         <hr />
@@ -89,13 +89,18 @@ const Formulario = () => {
                     </Form.Group>
                     <Form.Group>
                         <div  className='my-5 d-flex justify-content-center '>
-                            <Button type='submit' className='px-5 botonFormulario' onClick={handleSubmit}>Agregar nueva cita</Button>
+                            <Button type='submit' className='px-5 botonFormulario' >Agregar nueva cita</Button>
                         </div>
                     </Form.Group>
                 </Form>
             </section>
             <section className="row justify-content-between mt-5">
-                    <CardMascota listaDeCitas ={listamascota}/>
+                     {
+                        listamascota.length > 0 
+                        ? <CardMascota listaDeCitas ={listamascota}/>
+                        : <h3 className='text-center border'>No hay citas agendadas</h3>
+                    }
+                    
             </section>
         </>
     );
